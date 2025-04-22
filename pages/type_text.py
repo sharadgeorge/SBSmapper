@@ -25,7 +25,7 @@ def convert_json(df:pd.DataFrame):
 text_input = st.text_input("Type input text and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
 
-my_model_results = pipeline("ner", model= "checkpoint-92")
+#my_model_results = pipeline("ner", model= "checkpoint-92")
 HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 
 createNER_button = st.button("Create SBS codes")
@@ -43,19 +43,19 @@ if text_input is not None and createNER_button == True:
     with col1:
         #st.write(my_model_results(text_input))
         #col1.subheader("myDemo Model")
-        for result in my_model_results(text_input): 
-            st.write(result['word'], result['entity'])
-            dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
-        dfA = pd.DataFrame.from_dict(dictA)
+        #for result in my_model_results(text_input): 
+        #    st.write(result['word'], result['entity'])
+        #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
+        #dfA = pd.DataFrame.from_dict(dictA)
         #st.write(dfA)            
     with col2:
-        #st.write(HuggingFace_model_results(text_input))
-        #col2.subheader("Hugging Face Model")
+        st.write(HuggingFace_model_results(text_input))
+        col2.subheader("Hugging Face Model")
         for result in HuggingFace_model_results(text_input):
             st.write(result['word'], result['entity'])
             dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         dfB = pd.DataFrame.from_dict(dictB)
-        #st.write(dfB)
+        st.write(dfB)
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
