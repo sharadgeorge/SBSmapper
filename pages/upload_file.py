@@ -29,7 +29,7 @@ if uploaded_file is not None:
     st.success('Your file input is: '+ string_data, icon="✅")
 
 
-my_model_results = pipeline("ner", model= "checkpoint-92")
+#my_model_results = pipeline("ner", model= "checkpoint-92")
 HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 
 
@@ -48,14 +48,14 @@ if uploaded_file is not None and createNER_button == True:
     with col1: 
         #st.write(my_model_results(string_data))  
         #col1.subheader("myDemo Model")
-        for result in my_model_results(string_data): 
-            st.write(result['word'], result['entity'])
-            dict1["word"].append(result['word']), dict1["entity"].append(result['entity'])         
-        df1 = pd.DataFrame.from_dict(dict1)
+        #for result in my_model_results(string_data): 
+        #    st.write(result['word'], result['entity'])
+        #    dict1["word"].append(result['word']), dict1["entity"].append(result['entity'])         
+        #df1 = pd.DataFrame.from_dict(dict1)
         #st.write(df1)
     with col2:
-        #st.write(HuggingFace_model_results(string_data))
-        #col2.subheader("Hugging Face Model")
+        st.write(HuggingFace_model_results(string_data))
+        col2.subheader("Hugging Face Model")
         for result in HuggingFace_model_results(string_data):
             st.write(result['word'], result['entity'])     
             dict2["word"].append(result['word']), dict2["entity"].append(result['entity'])
