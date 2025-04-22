@@ -55,7 +55,7 @@ if text_input is not None and createNER_button == True:
             st.write(result['word'], result['entity'])
             dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         dfB = pd.DataFrame.from_dict(dictB)
-        st.write(dfB)
+        #st.write(dfB)
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
