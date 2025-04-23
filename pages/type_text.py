@@ -86,8 +86,8 @@ if INTdesc_input is not None and createSBScodes_button == True:
             col2.write(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0])
             col3.write(SBScorpus[result[0]["corpus_id"]])
             #dictA["Score"].append(result[0]["score"]), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[0]["corpus_id"]])
-            dictA["Score"].append("%.4f" % result[0]["score"]), dictA["SBS Description V2.0".append(SBScorpus[result[0]["corpus_id"]])
-            #dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]),
+            #dictA["Score"].append("%.4f" % result[0]["score"]), dictA["SBS Description V2.0".append(SBScorpus[result[0]["corpus_id"]])
+            dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]),
             col1.write("%.4f" % result[1]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[1]["corpus_id"]])
