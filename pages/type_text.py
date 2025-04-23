@@ -41,22 +41,10 @@ INTdesc_embedding = model.encode(INTdesc_input)
 
 
 # Semantic search
-#SBSdesc_1 = 'Computerised tomography of chest and abdomen'
-#SBSdesc_2 = 'Computerised tomography of chest and abdomen with intravenous contrast medium'
-#SBSdesc_3 = 'Computerised tomography of brain and chest'
-#SBSdesc_4 = 'Computerised tomography of brain, chest and abdomen'
-#SBSdesc_5 = 'Radiography of cervical spine'
-#SBSdesc_6 = 'Radiography of thoracic spine'
-#SBSdesc_7 = 'Radiography of lumbosacral spine'
-#SBSdesc_8 = 'Radiography of sacrococcygeal spine'
-#SBSdesc_9 = 'Radiography of spine, 2 regions'
-#SBSdesc_10 = 'Radiography of spine, 3 regions'
-#SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
-
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"]) 
-from_line = 7727 # Imaging chapter start, adjust as needed
-to_line = 8239 # Imaging chapter end, adjust as needed
+from_line = 7727 # Imaging services chapter start, adjust as needed
+to_line = 8239 # Imaging services chapter end, adjust as needed
 nrows = to_line - from_line + 1
 skiprows = list(range(1,from_line - 1))
 df_SBS = pd.read_csv("SBS_V2_Table.csv", header=0, skip_blank_lines=False, skiprows=skiprows, nrows=nrows)
@@ -77,12 +65,7 @@ col1.subheader("Score")
 col2.subheader("SBS code")
 col3.subheader("SBS description V2.0")
 
-
-
 dictA = {"Score": [], "SBS Code": [], "SBS Description V2.0": []}
-#dictB = {"word": [], "entity": []}
-
-
 
 if INTdesc_input is not None and createSBScodes_button == True: 
     #for i, result in enumerate(HF_model_results_displayed):
@@ -112,11 +95,9 @@ if INTdesc_input is not None and createSBScodes_button == True:
             col2.write(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0])
             col3.write(SBScorpus[result[4]["corpus_id"]])
             dictA["Score"].append("%.4f" % result[4]["score"]), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0"].append(SBScorpus[result[4]["corpus_id"]])
+                        
+            dfA = pd.DataFrame.from_dict(dictA) 
             
-            
-            dfA = pd.DataFrame.from_dict(dictA)
-            #st.write(dfA) 
-                
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
