@@ -77,14 +77,14 @@ dictB = {"word": [], "entity": []}
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col=1, na_values=['NA'], usecols=[3])
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"])
 df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"])
-st.write(df_SBS.head(5))
+#st.write(df_SBS.head(5))
 
 if INTdesc_input is not None and createSBScodes_button == True: 
     #for i, result in enumerate(HF_model_results_displayed):
     for result in HF_model_results_displayed:
         with st.container():
             col1.write("%.4f" % result[0]["score"])
-            col2.write("CODE PENDING")
+            col2.write(df.loc[df["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"] #.values[0]
             col3.write(SBScorpus[result[0]["corpus_id"]])
             col1.write("%.4f" % result[1]["score"])
             col2.write("CODE PENDING")
