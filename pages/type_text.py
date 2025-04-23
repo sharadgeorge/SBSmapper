@@ -64,10 +64,11 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 createSBScodes_button = st.button("Create SBS codes")
 
-col1, col2, col3 = st.columns([1,1.5,1])
-col1.subheader("SBS code V2.0")
-col2.subheader("SBS description V2.0")
-col3.subheader("Similarity score")
+col1, col2, col3 = st.columns([1,1,1.5])
+col1.subheader("Similarity score")
+col2.subheader("SBS code V2.0")
+col3.subheader("SBS description V2.0")
+
 
 dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
