@@ -74,7 +74,8 @@ dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
 
 
-df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col=1, na_values=['NA'], usecols=[3])
+#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col=1, na_values=['NA'], usecols=[3])
+df_SBS = pd.read_csv("SBS_V2_Table.csv")
 print(df_SBS.header)
 
 if INTdesc_input is not None and createSBScodes_button == True: 
