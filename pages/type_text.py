@@ -54,7 +54,12 @@ INTdesc_embedding = model.encode(INTdesc_input)
 #SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
 
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
-df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"])
+#df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"]) 
+from_line = 7727 # Imaging chapter start, adjust as needed
+to_line = 8239 # Imaging chapter end, adjust as needed
+nrows = to_line - from_line + 1
+skiprows = list(range(1,from_line - 1))
+df_SBS = pd.read_csv("SBS_V2_Table,csv", header=0, skip_blank_lines=False, skiprows=skiprows, nrows=nrows)
 #st.write(df_SBS.head(5))
 
 SBScorpus = df_SBS['Long_Description'].values.tolist()
