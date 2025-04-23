@@ -23,10 +23,11 @@ def convert_json(df:pd.DataFrame):
 
 #st.title("📘SBS mapper")
 
-INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input_desc")
+INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
 
-numMAPPINGS_input = st.text_input("Type number of mappings and hit Enter", key="user_input_numMAPPINGS")
+numMAPPINGS_input = 5
+#numMAPPINGS_input = st.text_input("Type number of mappings and hit Enter", key="user_input_numMAPPINGS")
 #st.button("Clear text", on_click=on_click)
 
 
