@@ -32,7 +32,7 @@ createNER_button = st.button("Create SBS codes")
 
 col1, col2, col3 = st.columns([1,1.5,1])
 col1.subheader("SBS code V2.0")
-col2.subheader("SBS description")
+col2.subheader("SBS description V2.0")
 col2.subheader("Similarity score")
 
 dictA = {"word": [], "entity": []}
