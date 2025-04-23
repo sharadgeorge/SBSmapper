@@ -72,7 +72,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
     #with col1:
     #    #st.write(my_model_results(INTdesc_input))
     #    #col1.subheader("SBS code V2.0")
-    #    #for result in HF_model_results_sorted: 
+    #    #for result in HF_model_results_displayed: 
     #    #    st.write(result['word'], result['entity'])
     #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
     #    #dfA = pd.DataFrame.from_dict(dictA)
@@ -81,11 +81,11 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
         for result in HF_model_results_displayed:
-            st.write(result[0])
-            st.write(result[1])
-            st.write(result[2])
-            st.write(result[3])
-            st.write(result[4])
+            st.write(result[0]["corpus_id"])
+            st.write(result[1]["corpus_id"])
+            st.write(result[2]["corpus_id"])
+            st.write(result[3]["corpus_id"])
+            st.write(result[4]["corpus_id"])
             #st.write(result['word'], result['entity'])
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         #dfB = pd.DataFrame.from_dict(dictB)
@@ -94,11 +94,11 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #st.write(HF_model_results)
         #col3.subheader("Similarity score")
         for result in HF_model_results_displayed:
-            st.write(result[0])
-            st.write(result[1])
-            st.write(result[2])
-            st.write(result[3])
-            st.write(result[4])
+            st.write(result[0]["score"])
+            st.write(result[1]["score"])
+            st.write(result[2]["score"])
+            st.write(result[3]["score"])
+            st.write(result[4]["score"])
             #st.write(result['word'], result['entity'])
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         #dfB = pd.DataFrame.from_dict(dictB)
