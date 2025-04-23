@@ -75,12 +75,8 @@ dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
 
 
-
-
-
-
-
-
+df_SBS = pandas.read_excel(("SBS_V2_Code_list.xlsx", index_col="B", na_values=['NA'], usecols="D")
+print(df_SBS.header)
 
 if INTdesc_input is not None and createSBScodes_button == True: 
     #for i, result in enumerate(HF_model_results_displayed):
