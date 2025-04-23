@@ -33,16 +33,16 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 
 # Semantic search
-SBSdesc_1 = Computerised tomography of chest and abdomen
-SBSdesc_2 = Computerised tomography of chest and abdomen with intravenous contrast medium
-SBSdesc_3 = Computerised tomography of brain and chest
-SBSdesc_4 = Computerised tomography of brain, chest and abdomen
-SBSdesc_5 = Radiography of cervical spine
-SBSdesc_6 = Radiography of thoracic spine
-SBSdesc_7 = Radiography of lumbosacral spine
-SBSdesc_8 = Radiography of sacrococcygeal spine
-SBSdesc_9 = Radiography of spine, 2 regions 
-SBSdesc_10 = Radiography of spine, 3 regions
+SBSdesc_1 = 'Computerised tomography of chest and abdomen'
+SBSdesc_2 = 'Computerised tomography of chest and abdomen with intravenous contrast medium'
+SBSdesc_3 = 'Computerised tomography of brain and chest'
+SBSdesc_4 = 'Computerised tomography of brain, chest and abdomen'
+SBSdesc_5 = 'Radiography of cervical spine'
+SBSdesc_6 = 'Radiography of thoracic spine'
+SBSdesc_7 = 'Radiography of lumbosacral spine'
+SBSdesc_8 = 'Radiography of sacrococcygeal spine'
+SBSdesc_9 = 'Radiography of spine, 2 regions'
+SBSdesc_10 = 'Radiography of spine, 3 regions'
 
 SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
