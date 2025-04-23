@@ -76,7 +76,7 @@ dictB = {"word": [], "entity": []}
 
 
 #df_SBS = pd.read_csv("SBS_V2_Code_list.xlsx", index_col=1, na_values=['NA'], usecols=[3])
-df_SBS = pd.read_csv("SBSmapper/SBS_V2_Code_list.xlsx")
+df_SBS = pd.read_csv("SBS_V2_Code_list.xlsx")
 print(df_SBS.header)
 
 if INTdesc_input is not None and createSBScodes_button == True: 
