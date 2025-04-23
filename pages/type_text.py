@@ -83,7 +83,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
             col1.write("CODE PENDING")
             col2.write(SBScorpus[result[0]["corpus_id"]])
             col3.write(result[0]["score"])
-    
+"""    
     #with col1:
     #    #st.write(my_model_results(INTdesc_input))
     #    #col1.subheader("SBS code V2.0")
@@ -96,10 +96,6 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
         for result in HF_model_results_displayed:
-          
-
-
-            
             st.write(SBScorpus[result[0]["corpus_id"]])
             st.write(SBScorpus[result[1]["corpus_id"]])
             st.write(SBScorpus[result[2]["corpus_id"]])
@@ -122,7 +118,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         #dfB = pd.DataFrame.from_dict(dictB)
         #st.write(dfB)
-
+"""
 
     
      
