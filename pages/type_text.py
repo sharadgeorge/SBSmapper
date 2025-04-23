@@ -47,8 +47,9 @@ SBSdesc_10 = 'Radiography of spine, 3 regions'
 SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
-#HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
-HuggingFace_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
+#HF_model_results = pipeline("ner", model = "blaze999/Medical-NER")
+HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
+HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
 
 createSBScodes_button = st.button("Create SBS codes")
 
@@ -65,15 +66,15 @@ if INTdesc_input is not None and createSBScodes_button == True:
     #with col1:
     #    #st.write(my_model_results(INTdesc_input))
     #    #col1.subheader("SBS code V2.0")
-    #    #for result in HuggingFace_model_results: 
+    #    #for result in HF_model_results_sorted: 
     #    #    st.write(result['word'], result['entity'])
     #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
     #    #dfA = pd.DataFrame.from_dict(dictA)
     #    #st.write(dfA)            
     with col2:
-        #st.write(HuggingFace_model_results)
+        #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
-        for result in HuggingFace_model_results:
+        for result in HF_model_results_sorted:
             st.write(result)
             #st.write(result['word'], result['entity'])
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
