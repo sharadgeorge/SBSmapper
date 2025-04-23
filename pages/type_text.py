@@ -70,6 +70,7 @@ col2.subheader("SBS code")
 col3.subheader("SBS description V2.0")
 
 
+
 dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
 
@@ -83,12 +84,25 @@ dictB = {"word": [], "entity": []}
 
 if INTdesc_input is not None and createSBScodes_button == True: 
     #for i, result in enumerate(HF_model_results_displayed):
-    with st.container():
-        for i, result in enumerate(HF_model_results_displayed):
-            col1.write(result[i]["score"])
+    for result in HF_model_results_displayed:
+        with st.container():
+            col1.write(result[0]["score"])
             col2.write("CODE PENDING")
-            col3.write(SBScorpus[result[i]["corpus_id"]])
-            
+            col3.write(SBScorpus[result[0]["corpus_id"]])
+            col1.write(result[1]["score"])
+            col2.write("CODE PENDING")
+            col3.write(SBScorpus[result[1]["corpus_id"]])
+            col1.write(result[2]["score"])
+            col2.write("CODE PENDING")
+            col3.write(SBScorpus[result[2]["corpus_id"]])
+            col1.write(result[3]["score"])
+            col2.write("CODE PENDING")
+            col3.write(SBScorpus[result[3]["corpus_id"]])
+            col1.write(result[4]["score"])
+            col2.write("CODE PENDING")
+            col3.write(SBScorpus[result[4]["corpus_id"]])
+
+
 """    
     #with col1:
     #    #st.write(my_model_results(INTdesc_input))
