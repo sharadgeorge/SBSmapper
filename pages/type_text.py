@@ -84,7 +84,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
     for result in HF_model_results_displayed:
         with st.container():
             col1.write("%.4f" % result[0]["score"])
-            col2.write(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"]) #.values[0])
+            col2.write(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0])
             col3.write(SBScorpus[result[0]["corpus_id"]])
             col1.write("%.4f" % result[1]["score"])
             col2.write("CODE PENDING")
