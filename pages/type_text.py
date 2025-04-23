@@ -53,8 +53,9 @@ SBSdesc_9 = 'Radiography of spine, 2 regions'
 SBSdesc_10 = 'Radiography of spine, 3 regions'
 
 SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
+
+
 SBScorpus_embeddings = model.encode(SBScorpus)
-#SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
 HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
