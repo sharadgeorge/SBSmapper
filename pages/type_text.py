@@ -65,15 +65,15 @@ if INTdesc_input is not None and createSBScodes_button == True:
     #with col1:
     #    #st.write(my_model_results(INTdesc_input))
     #    #col1.subheader("SBS code V2.0")
-    #    #for result in HuggingFace_model_results(INTdesc_input): 
+    #    #for result in HuggingFace_model_results: 
     #    #    st.write(result['word'], result['entity'])
     #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
     #    #dfA = pd.DataFrame.from_dict(dictA)
     #    #st.write(dfA)            
     with col2:
-        #st.write(HuggingFace_model_results(INTdesc_input))
-        col2.subheader("SBS description V2.0")
-        for result in HuggingFace_model_results(INTdesc_input):
+        #st.write(HuggingFace_model_results)
+        #col2.subheader("SBS description V2.0")
+        for result in HuggingFace_model_results:
             st.write(result)
             #st.write(result['word'], result['entity'])
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
