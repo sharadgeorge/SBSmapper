@@ -118,7 +118,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         #dfB = pd.DataFrame.from_dict(dictB)
         #st.write(dfB)
-"""
+
 
     
      
@@ -133,4 +133,4 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #jsonbutton = download_button(results, "results.json", "📥 Download .json")
         jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfA), file_name= "results.json", mime='application/json',  key='json_b')
 
-
+"""
