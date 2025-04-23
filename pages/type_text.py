@@ -22,7 +22,7 @@ def convert_json(df:pd.DataFrame):
 
 #st.title("📘SBS mapper")
 
-text_input = st.text_input("Type input text and hit Enter", key="user_input")
+text_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
@@ -30,10 +30,10 @@ HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 
 createNER_button = st.button("Create SBS codes")
 
-col1, col2 = st.columns([1,1.5])
-col1.subheader("Demo Model_1")
-col2.subheader("Demo_Model_2")
-
+col1, col2, col3 = st.columns([1,1.5,1])
+col1.subheader("SBS code V2.0")
+col2.subheader("SBS description)
+col2.subheader("Similarity score")
 
 dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
