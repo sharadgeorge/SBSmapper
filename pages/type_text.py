@@ -49,7 +49,7 @@ if text_input is not None and createNER_button == True:
     #    #dfA = pd.DataFrame.from_dict(dictA)
     #    #st.write(dfA)            
     with col2:
-        st.write(HuggingFace_model_results(text_input))
+        #st.write(HuggingFace_model_results(text_input))
         col2.subheader("Hugging Face Model")
         for result in HuggingFace_model_results(text_input):
             st.write(result['word'], result['entity'])
