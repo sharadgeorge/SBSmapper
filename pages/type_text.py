@@ -25,9 +25,9 @@ def convert_json(df:pd.DataFrame):
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
-INTdesc_embedding = model.encode(INTdesc_input)
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
+INTdesc_embedding = model.encode(INTdesc_input)
 
 # Compute cosine similarity between all pairs of SBS descriptions
 
