@@ -80,12 +80,32 @@ if INTdesc_input is not None and createSBScodes_button == True:
     with col2:
         #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
-        for result in HF_model_results_sorted:
-            st.write(result)
+        for result in HF_model_results_displayed:
+            st.write(result[0])
+            st.write(result[1])
+            st.write(result[2])
+            st.write(result[3])
+            st.write(result[4])
             #st.write(result['word'], result['entity'])
             #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
         #dfB = pd.DataFrame.from_dict(dictB)
         #st.write(dfB)
+    with col3:
+        #st.write(HF_model_results)
+        #col3.subheader("Similarity score")
+        for result in HF_model_results_displayed:
+            st.write(result[0])
+            st.write(result[1])
+            st.write(result[2])
+            st.write(result[3])
+            st.write(result[4])
+            #st.write(result['word'], result['entity'])
+            #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
+        #dfB = pd.DataFrame.from_dict(dictB)
+        #st.write(dfB)
+
+
+    
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
