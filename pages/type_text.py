@@ -81,7 +81,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
         for result in HF_model_results_displayed:
-            st.write(result[0]["corpus_id"])
+            st.write(SBScorpus_embeddings[result[0]["corpus_id"]])
             st.write(result[1]["corpus_id"])
             st.write(result[2]["corpus_id"])
             st.write(result[3]["corpus_id"])
