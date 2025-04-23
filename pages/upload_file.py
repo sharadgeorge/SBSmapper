@@ -35,9 +35,10 @@ HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 
 createNER_button = st.button("Create SBS codes")
 
-col1, col2 = st.columns([1,1.5])
-col1.subheader("Demo Model_1")
-col2.subheader("Demo_Model_2")
+col1, col2, col3 = st.columns([1,1.5,1])
+col1.subheader("SBS code V2.0")
+col2.subheader("SBS description")
+col2.subheader("Similarity score")
 
 if uploaded_file is not None and createNER_button == True: 
     dict1 = {"word": [], "entity": []}
