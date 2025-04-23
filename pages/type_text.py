@@ -26,6 +26,10 @@ def convert_json(df:pd.DataFrame):
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
 
+numMAPPINGS_input = st.text_input("Type number of mappings and hit Enter", key="user_input")
+#st.button("Clear text", on_click=on_click)
+
+
 model = SentenceTransformer('all-MiniLM-L6-v2')
 INTdesc_embedding = model.encode(INTdesc_input)
 
@@ -50,6 +54,7 @@ SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4,
 #HF_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
+HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 createSBScodes_button = st.button("Create SBS codes")
 
