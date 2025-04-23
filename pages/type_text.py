@@ -82,11 +82,11 @@ dictB = {"word": [], "entity": []}
 
 
 if INTdesc_input is not None and createSBScodes_button == True: 
-    for result in HF_model_results_displayed:
+    for i, result in enumerate(HF_model_results_displayed):
         with st.container():
-            col1.write(result[0]["score"])
+            col1.write(result[i]["score"])
             col2.write("CODE PENDING")
-            col3.write(SBScorpus[result[0]["corpus_id"]])
+            col3.write(SBScorpus[result[i]["corpus_id"]])
             
 """    
     #with col1:
