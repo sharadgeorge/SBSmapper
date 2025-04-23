@@ -21,7 +21,7 @@ type_text_page = st.Page(
 
 upload_file_page = st.Page(
     page="pages/upload_file.py",
-    title="upload file",
+    title="upload file (page not yet active)",
     icon=":material/file_upload:",
     default=False,)
 
