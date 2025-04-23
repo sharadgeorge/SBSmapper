@@ -31,8 +31,8 @@ numMAPPINGS_input = 5
 #st.button("Clear text", on_click=on_click)
 
 
-#model = SentenceTransformer('all-MiniLM-L6-v2') # fastest
-model = SentenceTransformer("all-mpnet-base-v2") # best performance
+model = SentenceTransformer('all-MiniLM-L6-v2') # fastest
+#model = SentenceTransformer("all-mpnet-base-v2") # best performance
 #model = SentenceTransformers("all-distilroberta-v1")
 
 INTdesc_embedding = model.encode(INTdesc_input)
@@ -57,7 +57,6 @@ SBScorpus_embeddings = model.encode(SBScorpus)
 #SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
-#HF_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
