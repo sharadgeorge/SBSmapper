@@ -55,8 +55,8 @@ if uploaded_file is not None and createNER_button == True:
     #    #df1 = pd.DataFrame.from_dict(dict1)
     #    #st.write(df1)
     with col2:
-        st.write(HuggingFace_model_results(string_data))
-        col2.subheader("Hugging Face Model")
+        #st.write(HuggingFace_model_results(string_data))
+        #col2.subheader("Hugging Face Model")
         for result in HuggingFace_model_results(string_data):
             st.write(result['word'], result['entity'])     
             dict2["word"].append(result['word']), dict2["entity"].append(result['entity'])
