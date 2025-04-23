@@ -49,7 +49,9 @@ SBSdesc_8 = 'Radiography of sacrococcygeal spine'
 SBSdesc_9 = 'Radiography of spine, 2 regions'
 SBSdesc_10 = 'Radiography of spine, 3 regions'
 
-SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
+SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
+SBScorpus_embeddings = model.encode(SBCcorpus)
+#SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
 #HF_model_results = pipeline("ner", model = "blaze999/Medical-NER")
@@ -81,8 +83,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #st.write(HF_model_results)
         #col2.subheader("SBS description V2.0")
         for result in HF_model_results_displayed:
-            #st.write(SBScorpus_embeddings[result[0]["corpus_id"]])
-            st.write(SBScorpus_embeddings[4])
+            st.write(SBScorpus[result[0]["corpus_id"]])
             st.write(result[1]["corpus_id"])
             st.write(result[2]["corpus_id"])
             st.write(result[3]["corpus_id"])
