@@ -41,20 +41,23 @@ INTdesc_embedding = model.encode(INTdesc_input)
 
 
 # Semantic search
-SBSdesc_1 = 'Computerised tomography of chest and abdomen'
-SBSdesc_2 = 'Computerised tomography of chest and abdomen with intravenous contrast medium'
-SBSdesc_3 = 'Computerised tomography of brain and chest'
-SBSdesc_4 = 'Computerised tomography of brain, chest and abdomen'
-SBSdesc_5 = 'Radiography of cervical spine'
-SBSdesc_6 = 'Radiography of thoracic spine'
-SBSdesc_7 = 'Radiography of lumbosacral spine'
-SBSdesc_8 = 'Radiography of sacrococcygeal spine'
-SBSdesc_9 = 'Radiography of spine, 2 regions'
-SBSdesc_10 = 'Radiography of spine, 3 regions'
+#SBSdesc_1 = 'Computerised tomography of chest and abdomen'
+#SBSdesc_2 = 'Computerised tomography of chest and abdomen with intravenous contrast medium'
+#SBSdesc_3 = 'Computerised tomography of brain and chest'
+#SBSdesc_4 = 'Computerised tomography of brain, chest and abdomen'
+#SBSdesc_5 = 'Radiography of cervical spine'
+#SBSdesc_6 = 'Radiography of thoracic spine'
+#SBSdesc_7 = 'Radiography of lumbosacral spine'
+#SBSdesc_8 = 'Radiography of sacrococcygeal spine'
+#SBSdesc_9 = 'Radiography of spine, 2 regions'
+#SBSdesc_10 = 'Radiography of spine, 3 regions'
+#SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
 
-SBScorpus = [SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,]
+#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
+df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"])
+#st.write(df_SBS.head(5))
 
-
+SBScorpus = df_SBS['Long_Description'].values.tolist()
 SBScorpus_embeddings = model.encode(SBScorpus)
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
@@ -74,9 +77,7 @@ col3.subheader("SBS description V2.0")
 dictA = {"Score": [], "SBS Code": [], "SBS Description V2.0": []}
 #dictB = {"word": [], "entity": []}
 
-#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
-df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"])
-#st.write(df_SBS.head(5))
+
 
 if INTdesc_input is not None and createSBScodes_button == True: 
     #for i, result in enumerate(HF_model_results_displayed):
