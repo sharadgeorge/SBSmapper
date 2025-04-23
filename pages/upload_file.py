@@ -46,14 +46,14 @@ if uploaded_file is not None and createNER_button == True:
     #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
     #string_data = stringio.read()
     #st.write("Your input is: ", string_data)
-    with col1: 
-        #st.write(my_model_results(string_data))  
-        #col1.subheader("myDemo Model")
-        #for result in my_model_results(string_data): 
-        #    st.write(result['word'], result['entity'])
-        #    dict1["word"].append(result['word']), dict1["entity"].append(result['entity'])         
-        #df1 = pd.DataFrame.from_dict(dict1)
-        #st.write(df1)
+    #with col1: 
+    #    #st.write(my_model_results(string_data))  
+    #    #col1.subheader("myDemo Model")
+    #    #for result in my_model_results(string_data): 
+    #    #    st.write(result['word'], result['entity'])
+    #    #    dict1["word"].append(result['word']), dict1["entity"].append(result['entity'])         
+    #    #df1 = pd.DataFrame.from_dict(dict1)
+    #    #st.write(df1)
     with col2:
         st.write(HuggingFace_model_results(string_data))
         col2.subheader("Hugging Face Model")
