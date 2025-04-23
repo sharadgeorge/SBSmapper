@@ -4,6 +4,7 @@ from io import StringIO
 import json
 from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
+from sentence_transformers import SentenceTransformer, util
 
 def on_click():
     st.session_state.user_input = ""
@@ -22,13 +23,34 @@ def convert_json(df:pd.DataFrame):
 
 #st.title("📘SBS mapper")
 
-text_input = st.text_input("Type internal description and hit Enter", key="user_input")
+INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Clear text", on_click=on_click)
+INTdesc_embedding = model.encode(INTdesc_input)
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Compute cosine similarity between all pairs of SBS descriptions
+
+
+# Semantic search
+SBSdesc_1 = Computerised tomography of chest and abdomen
+SBSdesc_2 = Computerised tomography of chest and abdomen with intravenous contrast medium
+SBSdesc_3 = Computerised tomography of brain and chest
+SBSdesc_4 = Computerised tomography of brain, chest and abdomen
+SBSdesc_5 = Radiography of cervical spine
+SBSdesc_6 = Radiography of thoracic spine
+SBSdesc_7 = Radiography of lumbosacral spine
+SBSdesc_8 = Radiography of sacrococcygeal spine
+SBSdesc_9 = Radiography of spine, 2 regions 
+SBSdesc_10 = Radiography of spine, 3 regions
+
+SBScorpus_embeddings = model.encode([SBSdesc_1, SBSdesc_2, SBSdesc_3, SBSdesc_4, SBSdesc_5, SBSdesc_6,SBSdesc_7, SBSdesc_8, SBSdesc_9, SBSdesc_10,])
 
 #my_model_results = pipeline("ner", model= "checkpoint-92")
-HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
+#HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
+HuggingFace_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 
-createNER_button = st.button("Create SBS codes")
+createSBScodes_button = st.button("Create SBS codes")
 
 col1, col2, col3 = st.columns([1,1.5,1])
 col1.subheader("SBS code V2.0")
@@ -38,23 +60,24 @@ col3.subheader("Similarity score")
 dictA = {"word": [], "entity": []}
 dictB = {"word": [], "entity": []}
 
-if text_input is not None and createNER_button == True: 
+if INTdesc_input is not None and createSBScodes_button == True: 
 
     #with col1:
-    #    #st.write(my_model_results(text_input))
-    #    #col1.subheader("myDemo Model")
-    #    #for result in my_model_results(text_input): 
+    #    #st.write(my_model_results(INTdesc_input))
+    #    #col1.subheader("SBS code V2.0")
+    #    #for result in HuggingFace_model_results(INTdesc_input): 
     #    #    st.write(result['word'], result['entity'])
     #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
     #    #dfA = pd.DataFrame.from_dict(dictA)
     #    #st.write(dfA)            
     with col2:
-        #st.write(HuggingFace_model_results(text_input))
-        col2.subheader("Hugging Face Model")
-        for result in HuggingFace_model_results(text_input):
-            st.write(result['word'], result['entity'])
-            dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
-        dfB = pd.DataFrame.from_dict(dictB)
+        #st.write(HuggingFace_model_results(INTdesc_input))
+        col2.subheader("SBS description V2.0")
+        for result in HuggingFace_model_results(INTdesc_input):
+            st.write(result)
+            #st.write(result['word'], result['entity'])
+            #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
+        #dfB = pd.DataFrame.from_dict(dictB)
         #st.write(dfB)
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
