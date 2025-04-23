@@ -86,19 +86,19 @@ if INTdesc_input is not None and createSBScodes_button == True:
     #for i, result in enumerate(HF_model_results_displayed):
     for result in HF_model_results_displayed:
         with st.container():
-            col1.write(result[0]["score"])
+            col1.write("%.4f" % result[0]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[0]["corpus_id"]])
-            col1.write(result[1]["score"])
+            col1.write("%.4f" % result[1]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[1]["corpus_id"]])
-            col1.write(result[2]["score"])
+            col1.write("%.4f" % result[2]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[2]["corpus_id"]])
-            col1.write(result[3]["score"])
+            col1.write("%.4f" % result[3]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[3]["corpus_id"]])
-            col1.write(result[4]["score"])
+            col1.write("%.4f" % result[4]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[4]["corpus_id"]])
 
