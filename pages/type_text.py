@@ -70,12 +70,10 @@ col3.subheader("SBS description V2.0")
 
 
 
-dictA = {"word": [], "entity": []}
-dictB = {"word": [], "entity": []}
+dictA = {"Score": [], "SBS Code": [], "SBS Description V2.0": []}
+#dictB = {"word": [], "entity": []}
 
-
-#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col=1, na_values=['NA'], usecols=[3])
-#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"])
+#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
 df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"])
 #st.write(df_SBS.head(5))
 
@@ -86,58 +84,26 @@ if INTdesc_input is not None and createSBScodes_button == True:
             col1.write("%.4f" % result[0]["score"])
             col2.write(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0])
             col3.write(SBScorpus[result[0]["corpus_id"]])
+            dictA["Score"].append("%.4f" % result[0]["score"), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[0]["corpus_id"]])
             col1.write("%.4f" % result[1]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[1]["corpus_id"]])
+            dictA["Score"].append("%.4f" % result[1]["score"), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[1]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[1]["corpus_id"]])
             col1.write("%.4f" % result[2]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[2]["corpus_id"]])
+            dictA["Score"].append("%.4f" % result[2]["score"), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[2]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[2]["corpus_id"]])
             col1.write("%.4f" % result[3]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[3]["corpus_id"]])
+            dictA["Score"].append("%.4f" % result[3]["score"), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[3]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[3]["corpus_id"]])
             col1.write("%.4f" % result[4]["score"])
             col2.write("CODE PENDING")
             col3.write(SBScorpus[result[4]["corpus_id"]])
-
-
-"""    
-    #with col1:
-    #    #st.write(my_model_results(INTdesc_input))
-    #    #col1.subheader("SBS code V2.0")
-    #    #for result in HF_model_results_displayed: 
-    #    #    st.write(result['word'], result['entity'])
-    #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
-    #    #dfA = pd.DataFrame.from_dict(dictA)
-    #    #st.write(dfA)            
-    with col2:
-        #st.write(HF_model_results)
-        #col2.subheader("SBS description V2.0")
-        for result in HF_model_results_displayed:
-            st.write(SBScorpus[result[0]["corpus_id"]])
-            st.write(SBScorpus[result[1]["corpus_id"]])
-            st.write(SBScorpus[result[2]["corpus_id"]])
-            st.write(SBScorpus[result[3]["corpus_id"]])
-            st.write(SBScorpus[result[4]["corpus_id"]])
-            #st.write(result['word'], result['entity'])
-            #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
-        #dfB = pd.DataFrame.from_dict(dictB)
-        #st.write(dfB)
-    with col3:
-        #st.write(HF_model_results)
-        #col3.subheader("Similarity score")
-        for result in HF_model_results_displayed:
-            st.write(result[0]["score"])
-            st.write(result[1]["score"])
-            st.write(result[2]["score"])
-            st.write(result[3]["score"])
-            st.write(result[4]["score"])
-            #st.write(result['word'], result['entity'])
-            #dictB["word"].append(result['word']), dictB["entity"].append(result['entity'])         
-        #dfB = pd.DataFrame.from_dict(dictB)
-        #st.write(dfB)
-
-
-    
+            dictA["Score"].append("%.4f" % result[4]["score"), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0".append(SBScorpus[result[4]["corpus_id"]])
+            dfA = pd.DataFrame.from_dict(dictA)
+            #st.write(dfA) 
+                
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
@@ -150,4 +116,3 @@ if INTdesc_input is not None and createSBScodes_button == True:
         #jsonbutton = download_button(results, "results.json", "📥 Download .json")
         jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfA), file_name= "results.json", mime='application/json',  key='json_b')
 
-"""
