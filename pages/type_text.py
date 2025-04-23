@@ -75,7 +75,8 @@ dictB = {"word": [], "entity": []}
 
 
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col=1, na_values=['NA'], usecols=[3])
-df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"])
+#df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"])
+df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_code_Hyphenated","Long_Description"])
 st.write(df_SBS.head(5))
 
 if INTdesc_input is not None and createSBScodes_button == True: 
