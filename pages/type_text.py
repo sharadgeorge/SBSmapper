@@ -40,14 +40,14 @@ dictB = {"word": [], "entity": []}
 
 if text_input is not None and createNER_button == True: 
 
-    with col1:
-        #st.write(my_model_results(text_input))
-        #col1.subheader("myDemo Model")
-        #for result in my_model_results(text_input): 
-        #    st.write(result['word'], result['entity'])
-        #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
-        #dfA = pd.DataFrame.from_dict(dictA)
-        #st.write(dfA)            
+    #with col1:
+    #    #st.write(my_model_results(text_input))
+    #    #col1.subheader("myDemo Model")
+    #    #for result in my_model_results(text_input): 
+    #    #    st.write(result['word'], result['entity'])
+    #    #    dictA["word"].append(result['word']), dictA["entity"].append(result['entity'])
+    #    #dfA = pd.DataFrame.from_dict(dictA)
+    #    #st.write(dfA)            
     with col2:
         st.write(HuggingFace_model_results(text_input))
         col2.subheader("Hugging Face Model")
