@@ -5,7 +5,7 @@ st.title("📘SBS mapper")
 st.header("Internal descriptions can be mapped to SBS codes in the below chapters (work in progress)")
 
 from IPython.display import Image
-Image("images/SBS_Chapters.png")
+Image(filename = "images/SBS_Chapters.png") # width=100, height=100)
 
 'Procedures on nervous system'
 'Procedures on endocrine system'
