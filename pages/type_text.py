@@ -31,9 +31,10 @@ numMAPPINGS_input = 5
 #st.button("Clear text", on_click=on_click)
 
 
-model = SentenceTransformer('all-MiniLM-L6-v2') # fastest
+#model = SentenceTransformer('all-MiniLM-L6-v2') # fastest
 #model = SentenceTransformer("all-mpnet-base-v2") # best performance
 #model = SentenceTransformers("all-distilroberta-v1")
+model = SentenceTransformer('sentence-transformers/msmarco-bert-base-dot-v5')
 
 INTdesc_embedding = model.encode(INTdesc_input)
 
