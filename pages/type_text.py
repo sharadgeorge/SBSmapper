@@ -64,6 +64,7 @@ HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=T
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 qa_model = pipeline("question-answering")
+reasoning_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -104,10 +105,11 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
             dfA = pd.DataFrame.from_dict(dictA) 
 
             question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
-            st.write(question)    
             shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
-            st.write(qa_model(question = question, context = shortlist[0]))
-            #st.write(best_mapping)
+            prompt = question + str(item) for item in shortlist
+            st.write(prompt)
+            #st.write(qa_model(question = question, context = shortlist[0]))
+            #st.write(reasoning_model(question + shortlist)
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
