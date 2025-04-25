@@ -74,7 +74,7 @@ col3.subheader("SBS description V2.0")
 
 dictA = {"Score": [], "SBS Code": [], "SBS Description V2.0": []}
 
-if INTdesc_input is not None and st.button("Create SBS codes"): #createSBScodes == True: 
+if INTdesc_input is not None and createSBScodes == True: 
     #for i, result in enumerate(HF_model_results_displayed):
     for result in HF_model_results_displayed:
         with st.container():
