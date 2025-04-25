@@ -24,8 +24,8 @@ def convert_json(df:pd.DataFrame):
 #st.title("📘SBS mapper")
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
-left_column, right_column = st.columns(2)
-left_column.button("Create SBS codes")
+createSBScodes, right_column = st.columns(2)
+createSBScodes.button("Create SBS codes")
 right_column.button("Clear text", on_click=on_click)
 
 numMAPPINGS_input = 5
@@ -71,7 +71,7 @@ col3.subheader("SBS description V2.0")
 
 dictA = {"Score": [], "SBS Code": [], "SBS Description V2.0": []}
 
-if INTdesc_input is not None and createSBScodes_button == True: 
+if INTdesc_input is not None and createSBScodes == True: 
     #for i, result in enumerate(HF_model_results_displayed):
     for result in HF_model_results_displayed:
         with st.container():
