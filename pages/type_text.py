@@ -110,7 +110,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     prompt = [question + shortlist]
     st.write(prompt)
     #st.write(qa_model(question = question, context = shortlist[0]))
-    #st.write(reasoning_model(question + shortlist)
+    #st.write(reasoning_model(question + *shortlist)
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
