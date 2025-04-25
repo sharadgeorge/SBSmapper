@@ -25,8 +25,6 @@ def convert_json(df:pd.DataFrame):
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input") 
 
-#createSBScodes = st.button("Create SBS codes")
-#st.button("Reset", on_click=on_click)
 createSBScodes, right_column = st.columns(2)
 createSBScodes_clicked = createSBScodes.button("Create SBS codes", key="user_createSBScodes")
 right_column.button("Reset", on_click=on_click)
@@ -105,8 +103,8 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-    #question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
-    #st.write(question)
+    question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
+    st.write(question)
         
     #context = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
     #best_mapping = qa_model(question = question, context = context) 
