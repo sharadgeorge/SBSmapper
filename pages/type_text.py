@@ -7,7 +7,7 @@ from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
 from sentence_transformers import SentenceTransformer, util
 import lmdeploy
-import tutbomind as tm
+import turbomind as tm
 
 def on_click():
     st.session_state.user_input = ""
