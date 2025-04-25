@@ -106,7 +106,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
             question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
             st.write(question)    
             shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
-            context = item for item in shortlist
+            context = [item for item in shortlist]
             st.write(context)
             best_mapping = qa_model(question = question, context = context) 
             st.write(best_mapping)
