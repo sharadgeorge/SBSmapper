@@ -103,8 +103,8 @@ if INTdesc_input is not None and createSBScodes_button == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-            context = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
-            st.write("BEST MAPPING: ", qa_model(question = question, context = context))
+        context = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
+        st.write(qa_model(question = question, context = context))
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
