@@ -107,7 +107,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
 
     question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
-    prompt = question + [str(item) for item in shortlist]
+    prompt = [question + str(item) for item in shortlist]
     st.write(prompt)
     #st.write(qa_model(question = question, context = shortlist[0]))
     #st.write(reasoning_model(question + shortlist)
