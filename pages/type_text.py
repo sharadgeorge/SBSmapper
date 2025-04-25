@@ -60,6 +60,9 @@ HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
+qa_model = pipeline("question-answering")
+question = "Which of these descriptions corresponds best to" + INTdesc_input +"?"
+
 createSBScodes_button = st.button("Create SBS codes")
 
 col1, col2, col3 = st.columns([1,1,2.5])
@@ -99,7 +102,9 @@ if INTdesc_input is not None and createSBScodes_button == True:
             dictA["Score"].append("%.4f" % result[4]["score"]), dictA["SBS Code"].append(df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0]), dictA["SBS Description V2.0"].append(SBScorpus[result[4]["corpus_id"]])
                         
             dfA = pd.DataFrame.from_dict(dictA) 
-            
+
+            context = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
+            st.write("BEST MAPPING: ", qa_model(question = question, context = context))
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
