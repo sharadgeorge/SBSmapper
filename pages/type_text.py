@@ -65,7 +65,7 @@ HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=T
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 #qa_model = pipeline("question-answering")
-reasoning_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
+#reasoning_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
