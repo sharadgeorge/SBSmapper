@@ -25,7 +25,7 @@ def convert_json(df:pd.DataFrame):
 
 INTdesc_input, clear_text = st.columns(2)
 #INTdesc_input.button('Click Me!')
-#INTdesc_input.text_input("Type internal description and hit Enter", key="user_input") 
+INTdesc_input = st.text_input('Type internal description and hit Enter', key="user_input") 
 clear_text.button("Clear text", on_click=on_click)
 
 numMAPPINGS_input = 5
