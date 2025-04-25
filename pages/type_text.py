@@ -25,8 +25,7 @@ def convert_json(df:pd.DataFrame):
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
 st.button("Reset", on_click=on_click)
-
-#INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input")
+createSBScodes = st.button("Create SBS codes")
 #createSBScodes, right_column = st.columns(2)
 #createSBScodes.button("Create SBS codes")
 #right_column.button("Reset", on_click=on_click)
