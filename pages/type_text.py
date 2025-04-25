@@ -24,8 +24,6 @@ def convert_json(df:pd.DataFrame):
 #st.title("📘SBS mapper")
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input") 
-#question = "Which of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
-#st.write(question)
 st.button("Clear text", on_click=on_click)
 
 numMAPPINGS_input = 5
@@ -105,7 +103,7 @@ if INTdesc_input is not None and createSBScodes_button == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-    question = "Which of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
+    question = "Which, if any, of the above SBS descriptions corresponds best to " + INTdesc_input +"?" 
     st.write(question)
         
     #context = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]]
