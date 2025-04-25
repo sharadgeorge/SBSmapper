@@ -24,7 +24,8 @@ def convert_json(df:pd.DataFrame):
 #st.title("📘SBS mapper")
 
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input") 
-question = INTdesc_input
+#question = INTdesc_input 
+question = "Which of these descriptions corresponds best to" + INTdesc_input +"?" 
 st.write(question)
 st.button("Clear text", on_click=on_click)
 
@@ -63,8 +64,7 @@ HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=T
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 qa_model = pipeline("question-answering")
-#question = "Which of these descriptions corresponds best to" + INTdesc_input +"?" 
-#st.write(question)
+
 
 createSBScodes_button = st.button("Create SBS codes")
 
