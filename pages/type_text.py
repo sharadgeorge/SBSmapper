@@ -28,8 +28,8 @@ INTdesc_input = st.text_input("Type internal description and hit Enter", key="us
 #createSBScodes = st.button("Create SBS codes")
 #st.button("Reset", on_click=on_click)
 createSBScodes, right_column = st.columns(2)
-createSBScodes.button("Create SBS codes")
-right_column.button("Reset", on_click=on_click)
+createSBScodes.button("Create SBS codes", key="user_clicks_createSBScodes")
+right_column.button("Reset", on_click=on_click, key="user_reset")
 
 numMAPPINGS_input = 5
 #numMAPPINGS_input = st.text_input("Type number of mappings and hit Enter", key="user_input_numMAPPINGS")
