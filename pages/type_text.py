@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 import json
+import torch
 from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
 from sentence_transformers import SentenceTransformer, util
