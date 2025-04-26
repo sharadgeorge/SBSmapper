@@ -3,6 +3,7 @@ import pandas as pd
 from io import StringIO
 import json
 import torch
+import transformers
 from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import AutoTokenizer, AutoModelForCausalLM
