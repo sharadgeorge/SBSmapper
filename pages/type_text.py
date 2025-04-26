@@ -3,17 +3,12 @@ import pandas as pd
 from io import StringIO
 import json
 import torch
-import transformers
-from transformers import pipeline
-#from transformers import AutoTokenizer, AutoModelForTokenClassification
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM #AutoModelForTokenClassification
 from sentence_transformers import SentenceTransformer, util 
 #import lmdeploy
 #import turbomind as tm 
 
 from huggingface_hub import login
-#import os
-#access_token = os.environ.get('HF_TOKEN')
 login(token = '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')
 
 def on_click():
@@ -52,10 +47,8 @@ model = SentenceTransformer('all-MiniLM-L6-v2') # fastest
 
 INTdesc_embedding = model.encode(INTdesc_input)
 
-# Compute cosine similarity between all pairs of SBS descriptions
+# Semantic search, Compute cosine similarity between all pairs of SBS descriptions
 
-
-# Semantic search
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", index_col="SBS_Code", usecols=["Long_Description"]) # na_values=['NA']
 #df_SBS = pd.read_csv("SBS_V2_Table.csv", usecols=["SBS_Code_Hyphenated","Long_Description"]) 
 from_line = 7727 # Imaging services chapter start, adjust as needed
@@ -74,34 +67,6 @@ HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=T
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 #qa_model = pipeline("question-answering", model= "distilbert_uncased_qa")
-#rs_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
-#reasoning_model = "internlm/internlm3-8b-instruct"
-#tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
-#model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
-#pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
-#model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
-#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
-#pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2") 
-#model_id = "meta-llama/Llama-3.2-1B" 
-#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto")
-#model_id = "meta-llama/Llama-3.2-1B-Instruct"
-#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
-
-model_id = "nvidia/Llama-3.1-Nemotron-Nano-8B-v1"
-model_kwargs = {"torch_dtype": torch.bfloat16, "device_map": "auto"}
-tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
-tokenizer.pad_token_id = tokenizer.eos_token_id
-pipeline = transformers.pipeline(
-   "text-generation",
-   model=model_id,
-   tokenizer=tokenizer,
-   max_new_tokens=32768,
-   temperature=0.6,
-   top_p=0.95,
-   **model_kwargs
-)
-# Thinking can be "on" or "off"
-thinking = "on"
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -141,32 +106,13 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-    question = "Which, if any, of the following Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
+    display_format = "Which, if any, of the above Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
+    st.write(display_format)
+    question = "Which, if any, of the below Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
     st.write(prompt)
-    #st.write(qa_model(question = question, context = shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]])
-    #st.write(rs_model(prompt))
-    #lmdeploy.pipeline(reasoning_model)(prompt)
-    #generated_text = pipe(prompt, max_length=200)
-    #st.write(generated_text[0]) #['generated_text'])
-    #messages = [
-    #{"role": "system", "content": "You are a powerful AI math assistant"},
-    #{"role": "user", "content": "Given the quadratic function $f(x)=ax^{2}+bx+c$ with its derivative $f′(x)$, where $f′(0) > 0$, and $f(x)\geqslant 0$ for any real number $x$, find the minimum value of $\frac{f(1)}{f′(0)}$."},
-    #]
-    #outputs = pipe(messages, max_new_tokens=2048,)
-    #st.write(outputs[0]["generated_text"][-1])
-    #messages = [
-    #{"role": "user", "content": "Who are you?"},
-    #]
-    #st.write(pipe(messages)) 
-    #messages = [
-    #{"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
-    #{"role": "user", "content": "Who are you?"},
-    #]
-    #outputs = pipe(messages, max_new_tokens=256,) 
-    #st.write(outputs[0]["generated_text"][-1])
-    st.write(pipeline([{"role": "system", "content": f"detailed thinking {thinking}"}, {"role": "user", "content": "Solve x*(sin(x)+2)=0"}]))
+    
     
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
