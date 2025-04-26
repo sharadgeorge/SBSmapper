@@ -75,16 +75,16 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 #qa_model = pipeline("question-answering", model= "distilbert_uncased_qa")
 #rs_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
 #reasoning_model = "internlm/internlm3-8b-instruct"
-#tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
-#model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
-#pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
+tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
+model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
+pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
 #model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
 #pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
 #pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2") 
 #model_id = "meta-llama/Llama-3.2-1B" 
 #pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto")
-model_id = "meta-llama/Llama-3.2-1B-Instruct"
-pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
+#model_id = "meta-llama/Llama-3.2-1B-Instruct"
+#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
