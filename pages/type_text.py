@@ -7,11 +7,13 @@ from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer, util 
-from huggingface_hub import login
 #import lmdeploy
-#import turbomind as tm
+#import turbomind as tm 
 
-#login(token = <huggingfaec-token>)
+from huggingface_hub import login
+import os
+access_token = os.environ.get('HF_TOKEN')
+login(token = access_token)
 
 def on_click():
     st.session_state.user_input = ""
