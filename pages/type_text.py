@@ -5,9 +5,10 @@ import json
 import torch
 from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer, util
-import lmdeploy
-import turbomind as tm
+#import lmdeploy
+#import turbomind as tm
 
 def on_click():
     st.session_state.user_input = ""
@@ -68,7 +69,10 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 #qa_model = pipeline("question-answering", model= "distilbert_uncased_qa")
 #rs_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
-reasoning_model = "internlm/internlm3-8b-instruct"
+#reasoning_model = "internlm/internlm3-8b-instruct"
+tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
+model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
+pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -114,7 +118,9 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     st.write(prompt)
     #st.write(qa_model(question = question, context = shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]])
     #st.write(rs_model(prompt)
-    lmdeploy.pipeline(reasoning_model)(prompt)
+    #lmdeploy.pipeline(reasoning_model)(prompt)
+    generated_text = pipe(prompt, max_length=200)
+    st.write(generated_text[0]['generated_text'])
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
