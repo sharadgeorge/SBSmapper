@@ -109,7 +109,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
 
     display_format = "ask REASONING MODEL: Which, if any, of the above Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     st.write(display_format)
-    st.markdown("Model answer needs to be integrated")
+    st.markdown("Model answer needs to be integrated here (Work in progress)")
     question = "Which, if any, of the below Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
