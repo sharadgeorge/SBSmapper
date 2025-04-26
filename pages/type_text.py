@@ -6,9 +6,12 @@ import torch
 from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer, util 
+from huggingface_hub import login
 #import lmdeploy
 #import turbomind as tm
+
+#login(token = <huggingfaec-token>)
 
 def on_click():
     st.session_state.user_input = ""
