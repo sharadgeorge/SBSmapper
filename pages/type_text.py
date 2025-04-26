@@ -73,11 +73,11 @@ HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=T
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
 #qa_model = pipeline("question-answering", model= "distilbert_uncased_qa")
-#rs_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
+rs_model = pipeline("text-generation", model="EpistemeAI/OpenReasoner-Llama-3.2-3B-rs1.01", torch_dtype=torch.bfloat16, device_map="auto")
 #reasoning_model = "internlm/internlm3-8b-instruct"
-tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
-model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
-pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
+#tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
+#model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
+#pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
 #model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
 #pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
 #pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2") 
@@ -129,7 +129,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
     st.write(prompt)
     #st.write(qa_model(question = question, context = shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]])
-    #st.write(rs_model(prompt)
+    st.write(rs_model(prompt)
     #lmdeploy.pipeline(reasoning_model)(prompt)
     #generated_text = pipe(prompt, max_length=200)
     #st.write(generated_text[0]) #['generated_text'])
@@ -147,8 +147,8 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
     {"role": "user", "content": "Who are you?"},
     ]
-    outputs = pipe(messages, max_new_tokens=256,) 
-    st.write(outputs[0]["generated_text"][-1])
+    #outputs = pipe(messages, max_new_tokens=256,) 
+    #st.write(outputs[0]["generated_text"][-1])
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
