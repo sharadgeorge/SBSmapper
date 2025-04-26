@@ -3,7 +3,7 @@ import streamlit as st
 st.title("📘SBS mapper")
 
 st.header("Internal descriptions can be mapped to SBS codes in the below chapters (work in progress)")
-st.image("images/SBS_Chapter_Index.png", use_container_width=True)
+st.image("images/SBS_Chapter_Index.png", use_container_width=False)
 
 #'Procedures on nervous system'
 #'Procedures on endocrine system'
