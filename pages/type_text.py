@@ -129,7 +129,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
     st.write(prompt)
     #st.write(qa_model(question = question, context = shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]])
-    st.write(rs_model(prompt)
+    st.write(rs_model(prompt))
     #lmdeploy.pipeline(reasoning_model)(prompt)
     #generated_text = pipe(prompt, max_length=200)
     #st.write(generated_text[0]) #['generated_text'])
