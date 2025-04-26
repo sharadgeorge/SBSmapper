@@ -66,15 +66,8 @@ HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
-model_id = "meta-llama/Llama-3.2-1B-Instruct"
-pipe = pipeline(
-    "text-generation",
-    model=model_id,
-    torch_dtype=torch.bfloat16,
-    device_map="auto",
-)
-
-
+#model_id = "meta-llama/Llama-3.2-1B-Instruct"
+#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -119,17 +112,17 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     question = "Which, if any, of the below Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
-    st.write(prompt)
+    #st.write(prompt)
     
-    messages = [
-    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
-    {"role": "user", "content": "Who are you?"},
-    ]
-    outputs = pipe(
-        messages,
-        max_new_tokens=256,
-    )
-    st.write(outputs[0]["generated_text"][-1])
+    #messages = [
+    #{"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
+    #{"role": "user", "content": "Who are you?"},
+    #]
+    #outputs = pipe(
+    #    messages,
+    #    max_new_tokens=256,
+    #)
+    #st.write(outputs[0]["generated_text"][-1])
     
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
