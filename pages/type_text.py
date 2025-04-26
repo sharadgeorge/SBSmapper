@@ -10,10 +10,10 @@ from sentence_transformers import SentenceTransformer, util
 #import lmdeploy
 #import turbomind as tm 
 
-from huggingface_hub import login
-import os
-access_token = os.environ.get('HF_TOKEN')
-login(token = access_token)
+#from huggingface_hub import login
+#import os
+#access_token = os.environ.get('HF_TOKEN')
+#login(token = access_token)
 
 def on_click():
     st.session_state.user_input = ""
@@ -80,7 +80,11 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 #pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
 #model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
 #pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
-pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2")
+#pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2") 
+#model_id = "meta-llama/Llama-3.2-1B" 
+#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto")
+model_id = "meta-llama/Llama-3.2-1B-Instruct"
+pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -129,16 +133,22 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     #lmdeploy.pipeline(reasoning_model)(prompt)
     #generated_text = pipe(prompt, max_length=200)
     #st.write(generated_text[0]) #['generated_text'])
-    messages = [
-    {"role": "system", "content": "You are a powerful AI math assistant"},
-    {"role": "user", "content": "Given the quadratic function $f(x)=ax^{2}+bx+c$ with its derivative $f′(x)$, where $f′(0) > 0$, and $f(x)\geqslant 0$ for any real number $x$, find the minimum value of $\frac{f(1)}{f′(0)}$."},
-    ]
+    #messages = [
+    #{"role": "system", "content": "You are a powerful AI math assistant"},
+    #{"role": "user", "content": "Given the quadratic function $f(x)=ax^{2}+bx+c$ with its derivative $f′(x)$, where $f′(0) > 0$, and $f(x)\geqslant 0$ for any real number $x$, find the minimum value of $\frac{f(1)}{f′(0)}$."},
+    #]
     #outputs = pipe(messages, max_new_tokens=2048,)
     #st.write(outputs[0]["generated_text"][-1])
+    #messages = [
+    #{"role": "user", "content": "Who are you?"},
+    #]
+    #st.write(pipe(messages)) 
     messages = [
+    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
     {"role": "user", "content": "Who are you?"},
     ]
-    st.write(pipe(messages))
+    outputs = pipe(messages, max_new_tokens=256,) 
+    st.write(outputs[0]["generated_text"][-1])
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
