@@ -3,8 +3,9 @@ pandas==2.2.2
 torch==2.4.0
 transformers==4.44.2
 sentence-transformers==4.1.0
-lmdeploy==0.7.2
-turbomind==0.0.2
+huggingface-hub==0.30.2
+#lmdeploy==0.7.2
+#turbomind==0.0.2
 #accelerate==1.6.0
 #openpxyl==3.1.0
 #ipython==9.0.0
