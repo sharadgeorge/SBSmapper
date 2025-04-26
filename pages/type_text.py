@@ -114,7 +114,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-    question = "Which, if any, of the following SBS descriptions corresponds best to " + INTdesc_input +"? " 
+    question = "Which, if any, of the following Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
     st.write(prompt)
