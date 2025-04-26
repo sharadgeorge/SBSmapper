@@ -120,7 +120,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     #st.write(rs_model(prompt)
     #lmdeploy.pipeline(reasoning_model)(prompt)
     generated_text = pipe(prompt, max_length=200)
-    st.write(generated_text[0]['generated_text'])
+    st.write(generated_text[0]) #['generated_text'])
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
