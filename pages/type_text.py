@@ -159,7 +159,7 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     #{"role": "user", "content": "Who are you?"},
     #]
     #st.write(pipe(messages)) 
-    messages = [
+    #messages = [
     #{"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
     #{"role": "user", "content": "Who are you?"},
     #]
