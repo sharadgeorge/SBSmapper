@@ -10,10 +10,10 @@ from sentence_transformers import SentenceTransformer, util
 #import lmdeploy
 #import turbomind as tm 
 
-#from huggingface_hub import login
+from huggingface_hub import login
 #import os
 #access_token = os.environ.get('HF_TOKEN')
-#login(token = access_token)
+login(token = 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)
 
 def on_click():
     st.session_state.user_input = ""
