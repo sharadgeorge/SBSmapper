@@ -83,8 +83,24 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 #pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2") 
 #model_id = "meta-llama/Llama-3.2-1B" 
 #pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto")
-model_id = "meta-llama/Llama-3.2-1B-Instruct"
-pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
+#model_id = "meta-llama/Llama-3.2-1B-Instruct"
+#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
+
+model_id = "nvidia/Llama-3.1-Nemotron-Nano-8B-v1"
+model_kwargs = {"torch_dtype": torch.bfloat16, "device_map": "auto"}
+tokenizer = transformers.AutoTokenizer.from_pretrained(model_id)
+tokenizer.pad_token_id = tokenizer.eos_token_id
+pipeline = transformers.pipeline(
+   "text-generation",
+   model=model_id,
+   tokenizer=tokenizer,
+   max_new_tokens=32768,
+   temperature=0.6,
+   top_p=0.95,
+   **model_kwargs
+)
+# Thinking can be "on" or "off"
+thinking = "on"
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -144,12 +160,13 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     #]
     #st.write(pipe(messages)) 
     messages = [
-    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
-    {"role": "user", "content": "Who are you?"},
-    ]
-    outputs = pipe(messages, max_new_tokens=256,) 
-    st.write(outputs[0]["generated_text"][-1])
-     
+    #{"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
+    #{"role": "user", "content": "Who are you?"},
+    #]
+    #outputs = pipe(messages, max_new_tokens=256,) 
+    #st.write(outputs[0]["generated_text"][-1])
+    st.write(pipeline([{"role": "system", "content": f"detailed thinking {thinking}"}, {"role": "user", "content": "Solve x*(sin(x)+2)=0"}]))
+    
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
         #csvbutton = download_button(results, "results.csv", "📥 Download .csv")
