@@ -73,8 +73,9 @@ HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 #tokenizer = AutoTokenizer.from_pretrained("nirajandhakal/LLaMA3-Reasoning")
 #model = AutoModelForCausalLM.from_pretrained("nirajandhakal/LLaMA3-Reasoning") 
 #pipe = pipeline("text-generation", model="nirajandhakal/LLaMA3-Reasoning", truncation=True)
-model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
-pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
+#model_id = "EpistemeAI/Reasoning-Llama-3.1-CoT-RE1-NMT-V2"
+#pipe = pipeline("text-generation", model=model_id, torch_dtype=torch.bfloat16, device_map="auto",)
+pipe = pipeline("text-generation", model="EpistemeAI/Reasoning-Llama-3.2-1B-Instruct-v1.2")
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -127,8 +128,12 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
     {"role": "system", "content": "You are a powerful AI math assistant"},
     {"role": "user", "content": "Given the quadratic function $f(x)=ax^{2}+bx+c$ with its derivative $f′(x)$, where $f′(0) > 0$, and $f(x)\geqslant 0$ for any real number $x$, find the minimum value of $\frac{f(1)}{f′(0)}$."},
     ]
-    outputs = pipe(messages, max_new_tokens=2048,)
-    st.write(outputs[0]["generated_text"][-1])
+    #outputs = pipe(messages, max_new_tokens=2048,)
+    #st.write(outputs[0]["generated_text"][-1])
+    messages = [
+    {"role": "user", "content": "Who are you?"},
+    ]
+    st.write(pipe(messages))
      
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
