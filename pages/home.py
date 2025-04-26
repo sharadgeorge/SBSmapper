@@ -6,6 +6,7 @@ st.header("Internal descriptions can be mapped to SBS codes in the below chapter
 
 #from IPython.display import Image
 #Image(filename = "images/SBS_Chapters.png") # width=100, height=100)
+st.image("images/SBS_Chapters.png", width=85)
 
 'Procedures on nervous system'
 'Procedures on endocrine system'
