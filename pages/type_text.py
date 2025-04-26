@@ -66,7 +66,8 @@ HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
 HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
 HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
 
-#qa_model = pipeline("question-answering", model= "distilbert_uncased_qa")
+qa_model = pipeline("question-answering", model= "distilbert/distilbert-base-uncased")
+
 
 col1, col2, col3 = st.columns([1,1,2.5])
 col1.subheader("Score")
@@ -106,13 +107,13 @@ if INTdesc_input is not None and createSBScodes_clicked == True:
                         
             dfA = pd.DataFrame.from_dict(dictA) 
 
-    display_format = "Which, if any, of the above Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
+    display_format = "ask REASONING MODEL: Which, if any, of the above Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     st.write(display_format)
     question = "Which, if any, of the below Saudi Billing System descriptions corresponds best to " + INTdesc_input +"? " 
     shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
     prompt = [question + " " + shortlist[0] + " " + shortlist[1] + " " + shortlist[2] + " " + shortlist[3] + " " + shortlist[4]]
     st.write(prompt)
-    
+    st.write(qa_model(question=question, context=prpmpt))
     
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
