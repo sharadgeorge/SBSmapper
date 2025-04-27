@@ -33,7 +33,7 @@ if uploaded_file is not None:
 HuggingFace_model_results = pipeline("ner", model = "blaze999/Medical-NER")
 
 
-createNER_button = st.button("Create SBS codes")
+createNER_button = st.button("Map to SBS codes")
 
 col1, col2, col3 = st.columns([1,1.5,1])
 col1.subheader("SBS code V2.0")
