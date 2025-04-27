@@ -31,7 +31,7 @@ def convert_json(df:pd.DataFrame):
 INTdesc_input = st.text_input("Type internal description and hit Enter", key="user_input") 
 
 createSBScodes, right_column = st.columns(2)
-createSBScodes_clicked = createSBScodes.button("Create SBS codes", key="user_createSBScodes")
+createSBScodes_clicked = createSBScodes.button("Map to SBS codes", key="user_createSBScodes")
 right_column.button("Reset", on_click=on_click)
 
 numMAPPINGS_input = 5
