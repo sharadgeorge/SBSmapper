@@ -1,0 +1,27 @@
+Chapter,Chapter title,Blocks,No. Codes,from_row_index,to_row_index
+1,Procedures on nervous system ,1- 86,371,0,371
+2,Procedures on endocrine system ,110-129,43,371,414
+3,Procedures on eye and adnexa ,160-256,443,414,857
+4,Procedures on ear and mastoid process ,300-333,175,857,1032
+5,"Procedures on nose, mouth and pharynx ",370-422,193,1032,1225
+6,Dental services ,450-490,445,1225,1670
+7,Procedures on respiratory system ,520-572,188,1670,1858
+8,Procedures on cardiovascular system ,600-777,903,1858,2761
+9,Procedures on blood and blood-forming organs ,800-817,50,2761,2811
+10,Procedures on digestive system ,850-1011,603,2811,3414
+11,Procedures on urinary system ,1040-1129,306,3414,3720
+12,Procedures on male genital organs ,1160-1203,175,3720,3895
+13,Gynaecological procedures ,1240-1299,230,3895,4125
+14,Obstetric procedures ,1330-1347,107,4125,4232
+15,Procedures on musculoskeletal system ,1360-1580,1760,4232,5992
+16,Dermatological and plastic procedures ,1600-1718,655,5992,6647
+17,Procedures on breast ,1740-1759,80,6647,6727
+18,Radiation oncology procedures ,1786-1800,71,6727,6798
+19,"Non-invasive, cognitive and other interventions, not elsewhere classified   ",1820-1923,927,6798,7725
+20,Imaging services ,1940-2016,513,7725,8239
+21,Laboratory and Pathology Services,3000- 3400,1664,8252,9916
+22,Ambulance and Transport Services,3500- 3540,25,9916,9940
+23,KSA Service Codes,3600- 3700,130,9940,10070
+24,Emergency Medical Services (EMS),2050,14,8239,8252
+25,Mortuary Services,4000-4020,10,10070,10080
+26,ALL Chapters,Total ,10081,0,10080
