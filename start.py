@@ -10,7 +10,7 @@ st.sidebar.text("Demo by JA-RAD")
 
 # --- PAGE SETUP ---
 demo_page = st.Page(
-    page="pages/mapper.py",
+    page="pages/demo.py",
     title="Demo",
     icon=":material/home:",
     default=True,)
