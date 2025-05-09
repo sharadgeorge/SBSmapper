@@ -67,7 +67,7 @@ def load_pipe():
     return pipe 
 pipe = load_pipe()
 
-
+'''
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
 INTdesc_embedding = model.encode(INTdesc_input)
 SBScorpus_embeddings = model.encode(SBScorpus)
@@ -124,3 +124,4 @@ if INTdesc_input is not None and st.button("Analyze the SBS codes", key="run_rs_
     with b3:
         #jsonbutton = download_button(results, "results.json", "📥 Download .json")
         jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfALL), file_name= "results.json", mime='application/json',  key='json_b')
+'''
