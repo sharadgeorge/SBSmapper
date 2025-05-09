@@ -1,9 +1,11 @@
 import streamlit as st
 
 # --- SHARED ON ALL PAGES ---
-#st.logo(image=":material/medical_information:")
+#st.logo(image="images/menu_book_60dp_75FBFD.png")
 st.logo("images/medical_information_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png")
-st.sidebar.text("Project by JA-RAD")
+st.sidebar.title("SBS V2.0 mapper")
+st.sidebar.subheader("(work in progress)")
+st.sidebar.text("Demo by JA-RAD")
 
 
 # --- PAGE SETUP ---
