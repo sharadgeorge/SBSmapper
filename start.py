@@ -11,13 +11,13 @@ st.sidebar.text("Demo by JA-RAD")
 # --- PAGE SETUP ---
 home_page = st.Page(
     page="pages/demo.py",
-    title="Home",
+    title="Demo",
     icon=":material/home:",
     default=True,)
 
-type_text_page = st.Page(
+reasoning_page = st.Page(
     page="pages/type_text.py",
-    title="type text",
+    title="type text (work in progress)",
     icon=":material/keyboard:",
     default=False,)
 
@@ -35,7 +35,7 @@ about_page = st.Page(
 
 
 # --- NAVIGATION SETUP ---
-pg = st.navigation(pages=[home_page, type_text_page, upload_file_page, about_page]) # WITHOUT SECTIONS
+pg = st.navigation(pages=[home_page,reasoning_page, upload_file_page, about_page]) # WITHOUT SECTIONS
 #pg = st.navigation({"Demo": [home_page], "Work in progess": [type_text_page, upload_file_page], "About": [about_page]}) # WITH SECTIONS
 
 pg.run()
