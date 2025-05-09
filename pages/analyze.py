@@ -48,10 +48,10 @@ rs_models = {
 ## Create the select Reasoning box
 selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
 #st.write("Current selection:", selected_rs_model)
-st.write("PPPPPPPPP: ", "page opened correctly!")
 
 ## Get the selected Reasoning model
 Reasoning_model = rs_models[selected_rs_model]
+st.write("PPPPPPPPP: ", "page opened correctly!")
 
 
 ### Load the Sentence Transformer model ...
@@ -67,7 +67,7 @@ def load_pipe():
     pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
     return pipe 
 pipe = load_pipe()
-
+st.write("QQQQQQQQQQQ: ", "pipe loaded correctly!"
 '''
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
 INTdesc_embedding = model.encode(INTdesc_input)
