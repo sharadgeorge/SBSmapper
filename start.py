@@ -9,17 +9,11 @@ st.sidebar.text("Demo by JA-RAD")
 
 
 # --- PAGE SETUP ---
-mapper_page = st.Page(
+demo_page = st.Page(
     page="pages/mapper.py",
-    title="Map to SBS",
+    title="Demo",
     icon=":material/home:",
     default=True,)
-
-reasoning_page = st.Page(
-    page="pages/analyze.py",
-    title="Analyze (work in progress)",
-    icon=":material/keyboard:",
-    default=False,)
 
 upload_file_page = st.Page(
     page="pages/upload_file.py",
@@ -35,7 +29,7 @@ about_page = st.Page(
 
 
 # --- NAVIGATION SETUP ---
-pg = st.navigation(pages=[mapper_page,reasoning_page,]) # WITHOUT SECTIONS
-#pg = st.navigation({"Map to SBS": [mapper_page], "Work in progess": [reasoning_page, upload_file_page], "About": [about_page]}) # WITH SECTIONS
+pg = st.navigation(pages=[mapper_page]) # WITHOUT SECTIONS
+#pg = st.navigation({"Demo": [demo_page], "Work in progess": [upload_file_page], "About": [about_page]}) # WITH SECTIONS
 
 pg.run()
