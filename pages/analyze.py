@@ -48,6 +48,7 @@ rs_models = {
 ## Create the select Reasoning box
 selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
 #st.write("Current selection:", selected_rs_model)
+st.write("PPPPPPPPP: ", page opened correctly!")
 
 ## Get the selected Reasoning model
 Reasoning_model = rs_models[selected_rs_model]
