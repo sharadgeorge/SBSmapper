@@ -7,7 +7,10 @@ from transformers import pipeline # AutoTokenizer, AutoModelForCausalLM, AutoMod
 from sentence_transformers import SentenceTransformer, util 
 import time
 import os
-os.getenv("HF_TOKEN") 
+
+hf_token = st.secrets["HF_TOKEN"]
+#os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
+os.getenv(hf_token)
 
 def get_device_map() -> str:
     return 'cuda' if torch.cuda.is_available() else 'cpu'
