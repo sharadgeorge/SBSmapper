@@ -136,25 +136,28 @@ def load_model():
     return model
 model = load_model() 
 
-### Define the Reasoning models
-#rs_models = {
-#    '(medium speed) original model for general domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
-#    '(slower speed) original model for general domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct', 
-#    '(medium speed) original model for general domain: EpistemeAI/ReasoningCore-1B-r1-0': 'EpistemeAI/ReasoningCore-1B-r1-0',
-#    '(expected in future) fine-tuned model for medical domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
-#    '(expected in future) fine-tuned model for medical domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct',
-#}
-### Create the select Reasoning box
-#selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
-##st.write("Current selection:", selected_rs_model)
-## Get the selected Reasoning model
-#Reasoning_model = rs_models[selected_rs_model]
-### Load the Reasoning model as pipeline ...
-#@st.cache_resource
-#def load_pipe():
-#    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device, torch_dtype=torch.bfloat16) # device_map="auto", torch_dtype=torch.bfloat16 
-#    return pipe 
-#pipe = load_pipe()
+## Define the Reasoning models
+rs_models = {
+    '(medium speed) original model for general domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
+    '(slower speed) original model for general domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct', 
+    '(medium speed) original model for general domain: EpistemeAI/ReasoningCore-1B-r1-0': 'EpistemeAI/ReasoningCore-1B-r1-0',
+    '(expected in future) fine-tuned model for medical domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
+    '(expected in future) fine-tuned model for medical domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct',
+}
+
+## Create the select Reasoning box
+selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
+#st.write("Current selection:", selected_rs_model)
+
+# Get the selected Reasoning model
+Reasoning_model = rs_models[selected_rs_model]
+
+# Load the Reasoning model as pipeline ...
+@st.cache_resource
+def load_pipe():
+    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device, torch_dtype=torch.bfloat16) # device_map="auto", torch_dtype=torch.bfloat16 
+    return pipe 
+pipe = load_pipe()
 
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
 INTdesc_embedding = model.encode(INTdesc_input)
