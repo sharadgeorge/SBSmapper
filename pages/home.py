@@ -9,17 +9,6 @@ import time
 import os
 os.getenv("HF_TOKEN") 
 
-#hide_streamlit_style = """
-#        <style>
-#        div[data-testid="stHeader"] {
-#        visibility: visible;
-#        position: sticky;
-#        top: 0
-#        }
-#        </style>
-#        """
-#st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
 st.title("📘SBS V2.0 mapper")
 #st.header("Internal descriptions can be mapped to SBS codes in the below chapters")
 #st.image("images/SBS_Chapter_Index.png", use_container_width=True)
@@ -164,12 +153,9 @@ model = load_model()
 #    return pipe 
 #pipe = load_pipe()
 
-
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
 INTdesc_embedding = model.encode(INTdesc_input)
 SBScorpus_embeddings = model.encode(SBScorpus)
-
-
 
 if INTdesc_input is not None and st.button("Map to SBS codes", key="run_st_model"): 
     HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
@@ -200,4 +186,3 @@ if INTdesc_input is not None and st.button("Map to SBS codes", key="run_st_model
     with b3:
         #jsonbutton = download_button(results, "results.json", "📥 Download .json")
         jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfALL), file_name= "results.json", mime='application/json',  key='json_b')
-        
