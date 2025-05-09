@@ -9,6 +9,30 @@ import time
 import os
 os.getenv("HF_TOKEN") 
 
+def get_device_map() -> str:
+    return 'cuda' if torch.cuda.is_available() else 'cpu'
+device = get_device_map()  # 'cpu'
+
+def on_click():
+    st.session_state.user_input = "" 
+
+def make_spinner(text = "In progress..."):
+    with st.spinner(text):
+        yield
+    
+#@st.cache
+def convert_df(df:pd.DataFrame):
+     return df.to_csv(index=False).encode('utf-8')
+
+#@st.cache
+def convert_json(df:pd.DataFrame):
+    result = df.to_json(orient="index")
+    parsed = json.loads(result)
+    json_string = json.dumps(parsed)
+    #st.json(json_string, expanded=True)
+    return json_string
+
+
 ## Define the Reasoning models
 rs_models = {
     '(medium speed) original model for general domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
