@@ -198,4 +198,15 @@ if INTdesc_input is not None and st.button("Map to SBS codes", key="run_st_model
         
     st.dataframe(data=dfALL, hide_index=True) 
 
+    bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
+        with b1:
+            #csvbutton = download_button(results, "results.csv", "📥 Download .csv")
+            csvbutton = st.download_button(label="📥 Download .csv", data=convert_df(dfALL), file_name= "results.csv", mime='text/csv', key='csv_b')
+        with b2:
+            #textbutton = download_button(results, "results.txt", "📥 Download .txt")
+            textbutton = st.download_button(label="📥 Download .txt", data=convert_df(dfALL), file_name= "results.text", mime='text/plain',  key='text_b')
+        with b3:
+            #jsonbutton = download_button(results, "results.json", "📥 Download .json")
+            jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfALL), file_name= "results.json", mime='application/json',  key='json_b')
+
 
