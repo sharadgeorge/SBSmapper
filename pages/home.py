@@ -1,9 +1,9 @@
 import streamlit as st
 
-st.title("📘SBS mapper")
+st.title("📘SBS V2.0 mapper")
 
 st.header("Internal descriptions can be mapped to SBS codes in the below chapters (work in progress)")
-st.image("images/SBS_Chapter_Index.png", use_container_width=True)
+#st.image("images/SBS_Chapter_Index.png", use_container_width=True)
 
 import streamlit as st 
 import pandas as pd
