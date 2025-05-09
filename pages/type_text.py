@@ -9,16 +9,16 @@ import time
 import os
 os.getenv("HF_TOKEN") 
 
-hide_streamlit_style = """
-        <style>
-        div[data-testid="stHeader"] {
-        visibility: visible;
-        position: sticky;
-        top: 0
-        }
-        </style>
-        """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+#hide_streamlit_style = """
+#        <style>
+#        div[data-testid="stHeader"] {
+#        visibility: visible;
+#        position: sticky;
+#        top: 0
+#        }
+#        </style>
+#        """
+#st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.header("Map internal descriptions to SBS codes with        Sentence Transformer + Reasoning Models")
 st.subheader("Select specific Chapter for quicker results")
