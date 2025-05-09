@@ -9,7 +9,7 @@ import time
 import os
 os.getenv("HF_TOKEN") 
 
-export HF_ENDPOINT=https://hf-mirror.com
+"export HF_ENDPOINT=https://hf-mirror.com"
 torch.set_grad_enabled(False) 
 
 st.title("📘SBS V2.0 mapper")
