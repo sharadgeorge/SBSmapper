@@ -67,7 +67,7 @@ def load_pipe():
     pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
     return pipe 
 pipe = load_pipe()
-st.write("QQQQQQQQQQQ: ", "pipe loaded correctly!"
+st.write("QQQQQQQQQQQ: ", "pipe loaded correctly!")
 '''
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
 INTdesc_embedding = model.encode(INTdesc_input)
