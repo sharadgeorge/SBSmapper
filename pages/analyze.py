@@ -51,7 +51,6 @@ selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_mo
 
 ## Get the selected Reasoning model
 Reasoning_model = rs_models[selected_rs_model]
-st.write("PPPPPPPPP: ", "page opened correctly!")
 
 
 ### Load the Sentence Transformer model ...
@@ -64,7 +63,7 @@ st.write("PPPPPPPPP: ", "page opened correctly!")
 ## Load the Reasoning model as pipeline ...
 @st.cache_resource
 def load_pipe():
-    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
+    pipe = pipeline("text-generation", model=Reasoning_model, device_map="auto",) # device_map="auto", torch_dtype=torch.bfloat16 
     return pipe 
 pipe = load_pipe()
 st.write("QQQQQQQQQQQ: ", "pipe loaded correctly!")
