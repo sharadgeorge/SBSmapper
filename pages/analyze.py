@@ -66,31 +66,33 @@ def load_pipe():
     pipe = pipeline("text-generation", model=Reasoning_model, torch_dtype=torch.bfloat16) # device = device, torch_dtype=torch.bfloat16
     return pipe 
 pipe = load_pipe()
-st.write("QQQQQQQQQQQ: ", "pipe loaded correctly!")
-'''
+
+
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
-INTdesc_embedding = model.encode(INTdesc_input)
-SBScorpus_embeddings = model.encode(SBScorpus)
+#INTdesc_embedding = model.encode(INTdesc_input)
+#SBScorpus_embeddings = model.encode(SBScorpus)
+
+#if INTdesc_input is not None and st.button("Analyze the SBS codes", key="run_rs_model"): 
+#    HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
+#    HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
+#    HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
+
+#    for i, result in enumerate(HF_model_results_displayed):
+#        dictA.update({"Score": "%.4f" % result[0]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[0]["corpus_id"]]})
+#        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
+#       dictA.update({"Score": "%.4f" % result[1]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[1]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[1]["corpus_id"]]})
+#        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
+#        dictA.update({"Score": "%.4f" % result[2]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[2]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[2]["corpus_id"]]})
+#       dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
+#        dictA.update({"Score": "%.4f" % result[3]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[3]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[3]["corpus_id"]]})
+#        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
+#        dictA.update({"Score": "%.4f" % result[4]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[4]["corpus_id"]]})
+#        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
+#        
+#    st.dataframe(data=dfALL, hide_index=True)
+
 
 if INTdesc_input is not None and st.button("Analyze the SBS codes", key="run_rs_model"): 
-    HF_model_results = util.semantic_search(INTdesc_embedding, SBScorpus_embeddings)
-    HF_model_results_sorted = sorted(HF_model_results, key=lambda x: x[1], reverse=True)
-    HF_model_results_displayed = HF_model_results_sorted[0:numMAPPINGS_input]
-
-    for i, result in enumerate(HF_model_results_displayed):
-        dictA.update({"Score": "%.4f" % result[0]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[0]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[0]["corpus_id"]]})
-        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
-        dictA.update({"Score": "%.4f" % result[1]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[1]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[1]["corpus_id"]]})
-        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
-        dictA.update({"Score": "%.4f" % result[2]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[2]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[2]["corpus_id"]]})
-        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
-        dictA.update({"Score": "%.4f" % result[3]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[3]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[3]["corpus_id"]]})
-        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
-        dictA.update({"Score": "%.4f" % result[4]["score"], "SBS Code": df_SBS.loc[df_SBS["Long_Description"] == SBScorpus[result[4]["corpus_id"]],"SBS_Code_Hyphenated"].values[0], "SBS Description V2.0": SBScorpus[result[4]["corpus_id"]]})
-        dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
-        
-    st.dataframe(data=dfALL, hide_index=True)
-
     display_format = "ask REASONING MODEL: Which, if any, of the following SBS descriptions corresponds best to " + INTdesc_input +"? " 
     #st.write(display_format)
     question = "Which one, if any, of the following Saudi Billing System descriptions A, B, C, D, or E corresponds best to " + INTdesc_input +"? " 
