@@ -1,10 +1,3 @@
-import streamlit as st
-
-st.title("📘SBS V2.0 mapper")
-
-st.header("Internal descriptions can be mapped to SBS codes in the below chapters (work in progress)")
-#st.image("images/SBS_Chapter_Index.png", use_container_width=True)
-
 import streamlit as st 
 import pandas as pd
 from io import StringIO
@@ -27,7 +20,11 @@ os.getenv("HF_TOKEN")
 #        """
 #st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+st.title("📘SBS V2.0 mapper")
+#st.header("Internal descriptions can be mapped to SBS codes in the below chapters")
+#st.image("images/SBS_Chapter_Index.png", use_container_width=True)
 st.header("Map internal descriptions to SBS codes with        Sentence Transformer + Reasoning Models")
+
 st.subheader("Select specific Chapter for quicker results")
 #df_chapters = pd.read_csv("SBS_V2_0/Chapter_Index_Rows.csv") 
 df_chapters = pd.read_csv("SBS_V2_0/Chapter_Index_Rows_with_total.csv") 
