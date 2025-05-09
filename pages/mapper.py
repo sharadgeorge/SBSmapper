@@ -152,7 +152,7 @@ model = load_model()
 ### Load the Reasoning model as pipeline ...
 #@st.cache_resource
 #def load_pipe():
-#    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
+#    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device, torch_dtype=torch.bfloat16) # device_map="auto", torch_dtype=torch.bfloat16 
 #    return pipe 
 #pipe = load_pipe()
 
@@ -178,6 +178,27 @@ if INTdesc_input is not None and st.button("Map to SBS codes", key="run_st_model
         dfALL = pd.concat([dfALL, pd.DataFrame([dictA])], ignore_index=True)
         
     st.dataframe(data=dfALL, hide_index=True) 
+    display_format = "ask REASONING MODEL: Which, if any, of the following SBS descriptions corresponds best to " + INTdesc_input +"? " 
+    #st.write(display_format)
+    question = "Which one, if any, of the following Saudi Billing System descriptions A, B, C, D, or E corresponds best to " + INTdesc_input +"? " 
+    shortlist = [SBScorpus[result[0]["corpus_id"]], SBScorpus[result[1]["corpus_id"]], SBScorpus[result[2]["corpus_id"]], SBScorpus[result[3]["corpus_id"]], SBScorpus[result[4]["corpus_id"]]] 
+    prompt = question + " " +"A: "+ shortlist[0] + " " +"B: " + shortlist[1] + " " + "C: " + shortlist[2] + " " + "D: " + shortlist[3] + " " + "E: " + shortlist[4]
+    #st.write(prompt)
+
+    messages = [
+    {"role": "system", "content": "You are a knowledgable AI assistant who always answers truthfully and precisely!"},
+    {"role": "user", "content": prompt},
+    ]
+
+    status_text = st.empty()
+    status_text.warning("It may take several minutes for Reasoning Model to analyze above 5 options and output results below")
+    #runningToggle(True)
+ 
+    outputs = pipe(
+        messages,
+        max_new_tokens=256,
+    )
+    st.write(outputs[0]["generated_text"][-1]["content"]) 
 
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
     with b1:
