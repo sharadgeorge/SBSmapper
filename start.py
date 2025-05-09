@@ -16,7 +16,7 @@ demo_page = st.Page(
     default=True,)
 
 reasoning_page = st.Page(
-    page="pages/reasoning.py",
+    page="pages/analyze.py",
     title="type text (work in progress)",
     icon=":material/keyboard:",
     default=False,)
