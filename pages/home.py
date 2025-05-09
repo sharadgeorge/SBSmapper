@@ -140,24 +140,6 @@ selected_st_model = st.selectbox('Current selected Sentence Transformer model:',
 ## Get the selected SentTrans model
 SentTrans_model = st_models[selected_st_model]
 
-
-## Define the Reasoning models
-rs_models = {
-    '(medium speed) original model for general domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
-    '(slower speed) original model for general domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct', 
-    '(medium speed) original model for general domain: EpistemeAI/ReasoningCore-1B-r1-0': 'EpistemeAI/ReasoningCore-1B-r1-0',
-    '(expected in future) fine-tuned model for medical domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
-    '(expected in future) fine-tuned model for medical domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct',
-}
- 
-## Create the select Reasoning box
-selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
-#st.write("Current selection:", selected_rs_model)
-
-## Get the selected Reasoning model
-Reasoning_model = rs_models[selected_rs_model]
-
-
 ## Load the Sentence Transformer model ...
 @st.cache_resource
 def load_model():
@@ -165,12 +147,25 @@ def load_model():
     return model
 model = load_model() 
 
-## Load the Reasoning model as pipeline ...
-@st.cache_resource
-def load_pipe():
-    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
-    return pipe 
-pipe = load_pipe()
+### Define the Reasoning models
+#rs_models = {
+#    '(medium speed) original model for general domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
+#    '(slower speed) original model for general domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct', 
+#    '(medium speed) original model for general domain: EpistemeAI/ReasoningCore-1B-r1-0': 'EpistemeAI/ReasoningCore-1B-r1-0',
+#    '(expected in future) fine-tuned model for medical domain: meta-llama/Llama-3.2-1B-Instruct': 'meta-llama/Llama-3.2-1B-Instruct', 
+#    '(expected in future) fine-tuned model for medical domain: Qwen/Qwen2-1.5B-Instruct': 'Qwen/Qwen2-1.5B-Instruct',
+#}
+### Create the select Reasoning box
+#selected_rs_model = st.selectbox('Current selected Reasoning model:', list(rs_models.keys())) # or 'Choose a Reasoning Model'
+##st.write("Current selection:", selected_rs_model)
+### Get the selected Reasoning model
+#Reasoning_model = rs_models[selected_rs_model]
+### Load the Reasoning model as pipeline ...
+#@st.cache_resource
+#def load_pipe():
+#    pipe = pipeline("text-generation", model=Reasoning_model, device_map=device,) # device_map="auto", torch_dtype=torch.bfloat16 
+#    return pipe 
+#pipe = load_pipe()
 
 
 # Semantic search, Compute cosine similarity between INTdesc_embedding and SBS descriptions
@@ -199,14 +194,13 @@ if INTdesc_input is not None and st.button("Map to SBS codes", key="run_st_model
     st.dataframe(data=dfALL, hide_index=True) 
 
     bs, b1, b2, b3, bLast = st.columns([0.75, 1.5, 1.5, 1.5, 0.75])
-        with b1:
-            #csvbutton = download_button(results, "results.csv", "📥 Download .csv")
-            csvbutton = st.download_button(label="📥 Download .csv", data=convert_df(dfALL), file_name= "results.csv", mime='text/csv', key='csv_b')
-        with b2:
-            #textbutton = download_button(results, "results.txt", "📥 Download .txt")
-            textbutton = st.download_button(label="📥 Download .txt", data=convert_df(dfALL), file_name= "results.text", mime='text/plain',  key='text_b')
-        with b3:
-            #jsonbutton = download_button(results, "results.json", "📥 Download .json")
-            jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfALL), file_name= "results.json", mime='application/json',  key='json_b')
-
-
+    with b1:
+        #csvbutton = download_button(results, "results.csv", "📥 Download .csv")
+        csvbutton = st.download_button(label="📥 Download .csv", data=convert_df(dfALL), file_name= "results.csv", mime='text/csv', key='csv_b')
+    with b2:
+        #textbutton = download_button(results, "results.txt", "📥 Download .txt")
+        textbutton = st.download_button(label="📥 Download .txt", data=convert_df(dfALL), file_name= "results.text", mime='text/plain',  key='text_b')
+    with b3:
+        #jsonbutton = download_button(results, "results.json", "📥 Download .json")
+        jsonbutton = st.download_button(label="📥 Download .json", data=convert_json(dfALL), file_name= "results.json", mime='application/json',  key='json_b')
+        
